@@ -9,4 +9,7 @@ endpoint =  config.ENDPOINT
 def test_get_question():
     q_id = question_utils.create_question_id()
     get_question_response = rq.get(config.GET_QUESTION_URL + f"/{q_id}")
-    assert get_question_response.status_code == 200
+    assert get_question_response.status_code == 200, "Question not found"
+    get_question_data = get_question_response.json()
+    assert get_question_data["questionId"] == q_id, "Question fetched is not same as requested"
+    
