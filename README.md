@@ -39,3 +39,32 @@ pytest tests_question_api
 
 deactivate
 ```
+
+#### Instructions for Windows
+
+1. **Open cmd or PowerShell**
+
+2. **Set PYTHONPATH locally or in environment variables.**
+    - For cmd
+    ```bash
+    set PYTHONPATH=%PYTHONPATH%;C:\Users\kushidhar\Projects\project_orion\automation_pytest
+    ```
+    - For PowerShell
+   ```bash
+   $env:PYTHONPATH="$env:PYTHONPATH;C:\Users\kushidhar\Projects\project_orion\automation_pytest"
+   ```
+
+3. **Virtual environment setup**
+    ```text
+    VIRTUAL ENV SETUP
+    python -m venv venv  
+         
+    source venv/Scripts/activate.ps1 (For PowerShell)
+    source venv/Scripts/activate.bat (For cmd)
+    
+    pip install -r requirements.txt 
+    
+    pytest tests_question_api
+    
+    deactivate
+    ```
