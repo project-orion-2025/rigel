@@ -11,8 +11,12 @@ endpoint =  config.ENDPOINT
 # Then get question and verify
 def test_update_question():
     q_id = question_utils.create_question_id()
+    
+    token = config.AUTH_TOKEN
+    headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+
     payload_for_update = question_utils.generate_payload()
-    update_question_response = rq.put(config.UPDATE_QUESTION_URL + f"/{q_id}", json = payload_for_update)
+    update_question_response = rq.put(config.UPDATE_QUESTION_URL + f"/{q_id}", json = payload_for_update, headers = headers)
     assert update_question_response.status_code == 200, "Failed to update question"
     get_question_response = rq.get(config.GET_QUESTION_URL + f"/{q_id}")
     updated_data = get_question_response.json()

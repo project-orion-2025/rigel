@@ -13,7 +13,7 @@ def generate_payload():
         "subject": "CHEMISTRY",
         "difficulty": "MEDIUM",
         "status": "ACTIVE",
-        "author": "Kushidhar",
+        "author": "siva54",
         "options": [
             {
                 "text": "1"
@@ -54,7 +54,9 @@ def create_question_id():
     assert 1 <= payload["correctOptionId"] <= 4, "CorrectOptionId must be between 1 and 4"
     assert len(payload["tagList"]) >= 1, "At least one tag is required."
     
-    create_question_response = rq.post(config.CREATE_QUESTION_URL, json=payload)
+    token = config.AUTH_TOKEN    
+    headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+    create_question_response = rq.post(config.CREATE_QUESTION_URL, json=payload, headers = headers)
     assert create_question_response.status_code == 201, "Failed to create question."
     question_data = create_question_response.json()
     question_id = question_data["questionId"]
