@@ -59,8 +59,8 @@ deactivate
     VIRTUAL ENV SETUP
     python -m venv venv  
          
-    source venv/Scripts/activate.ps1 (For PowerShell)
-    source venv/Scripts/activate.bat (For cmd)
+    venv/Scripts/activate.ps1 (For PowerShell)
+    venv/Scripts/activate.bat (For cmd)
     
     pip install -r requirements.txt 
     
